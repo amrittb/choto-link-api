@@ -1,4 +1,4 @@
-# choto.link
+# choto-link-api
 
 > टाइम छैन, लिङ्क छोटो बना!
 
