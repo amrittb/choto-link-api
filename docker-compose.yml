@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  etcd:
+    image: registry.k8s.io/etcd:3.5.13-0
+    container_name: etcd
+    command: >
+      etcd
+        --name etcd
+        --data-dir /etcd-data
+        --listen-client-urls http://0.0.0.0:2379
+        --advertise-client-urls http://etcd:2379
+        --listen-peer-urls http://0.0.0.0:2380
+        --initial-advertise-peer-urls http://etcd:2380
+        --initial-cluster etcd=http://etcd:2380
+        --initial-cluster-token etcd-cluster
+        --initial-cluster-state new
+    ports:
+      - "2379:2379"
+      - "2380:2380"
+    volumes:
+      - etcd-data:/etcd-data
+    networks:
+      - app-network
+
+volumes:
+  etcd-data:
+
+networks:
+  app-network:
+    driver: bridge

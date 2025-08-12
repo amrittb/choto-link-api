@@ -3,7 +3,7 @@ package main
 import (
 	"net/http"
 
-	"github.com/amrittb/choto-link-api/internal/chotoapi"
+	"github.com/amrittb/choto-link-api/internal/service"
 	"github.com/gin-gonic/gin"
 )
 
@@ -21,7 +21,7 @@ func main() {
 		}
 
 		c.JSON(http.StatusOK, gin.H{
-			"shortUrl": chotoapi.Create(reqJson.LongUrl),
+			"shortUrl": service.GenerateShortUrl(reqJson.LongUrl),
 		})
 	})
 
@@ -34,7 +34,7 @@ func main() {
 			return
 		}
 
-		longUrl, found := chotoapi.Get(shortUrl)
+		longUrl, found := service.GetLongUrl(shortUrl)
 		if !found {
 			c.JSON(http.StatusNotFound, gin.H{
 				"error": "Redirection URL not found.",
