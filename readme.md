@@ -31,3 +31,10 @@ go mod tidy
 # Run all files
 go run ./cmd/api/.
 ```
+
+## To do list
+
+- [ ] Add cache infront of DB call
+- [ ] Run performance tests
+- [ ] Fix any concurrency issues due to Atomic operations
+- [ ] Other Interesting problems (find from SDFC / other guides)
