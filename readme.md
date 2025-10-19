@@ -17,3 +17,8 @@
 2. Short Url Redirection Guarantee
    1. The short url will ALWAYS be redirected to the original long url and will never expire.
    2. Even though the redirection is permanent, the redirection request should always be sent to our servers.
+
+
+## Architecture
+
+![Choto Link Architecture](docs/architecture.png)
