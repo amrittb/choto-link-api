@@ -34,6 +34,6 @@ func (service *ShortUrlService) AllocateAndSaveShortUrl(longUrl string) (string,
 	return shortUrl, nil
 }
 
-func (service *ShortUrlService) GetLongUrl(shortUrl string) (string, bool) {
+func (service *ShortUrlService) GetLongUrl(shortUrl string) (string, bool, error) {
 	return service.urlRepository.Get(shortUrl)
 }
