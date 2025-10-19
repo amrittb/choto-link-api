@@ -22,3 +22,12 @@
 ## Architecture
 
 ![Choto Link Architecture](docs/architecture.png)
+
+## Run
+
+```bash
+go mod tidy
+
+# Run all files
+go run ./cmd/api/.
+```
