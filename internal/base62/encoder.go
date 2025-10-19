@@ -2,7 +2,7 @@ package base62
 
 const base62Chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
 
-func EncodeBase62(num uint64) string {
+func Encode(num uint64) string {
 	if num == 0 {
 		return "0"
 	}

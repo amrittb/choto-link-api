@@ -1,16 +1,21 @@
 package service
 
-import "github.com/amrittb/choto-link-api/internal/base62"
+import (
+	"github.com/amrittb/choto-link-api/internal/base62"
+	"github.com/amrittb/choto-link-api/internal/generator"
+	"github.com/amrittb/choto-link-api/internal/repository"
+)
 
-var db map[string]string = make(map[string]string)
-
-func GenerateShortUrl(request string) string {
-	shortUrl := base62.EncodeBase62(GetNextId())
-	db[shortUrl] = request
+func GenerateShortUrl(longUrl string) string {
+	// 1. Get nextId from current Id Range
+	// 2. Encode nextId to base62
+	// 3. Save shortUrl into DB
+	// 5. Return response
+	shortUrl := base62.Encode(generator.GetNextId())
+	repository.Save(repository.UrlMap{ShortUrl: shortUrl, LongUrl: longUrl})
 	return shortUrl
 }
 
 func GetLongUrl(shortUrl string) (string, bool) {
-	val, ok := db[shortUrl]
-	return val, ok
+	return repository.Get(shortUrl)
 }
